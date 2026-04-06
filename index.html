@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>PureWater | Home</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI;
+}
+
+body{
+background:#f4f7fb;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+height:70px;
+background:white;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 40px;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
+z-index:1000;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#0a3d62;
+}
+
+.menu-btn{
+font-size:28px;
+cursor:pointer;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+left:-260px;
+top:0;
+width:260px;
+height:100%;
+background:#0a3d62;
+color:white;
+padding:40px;
+transition:0.4s;
+z-index:2000;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.sidebar h2{
+margin-bottom:30px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+text-decoration:none;
+margin:15px 0;
+font-size:18px;
+}
+
+.sidebar a:hover{
+color:#9bd2ff;
+}
+
+/* OVERLAY */
+
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.3);
+opacity:0;
+visibility:hidden;
+transition:0.3s;
+}
+
+.overlay.active{
+opacity:1;
+visibility:visible;
+}
+
+/* HERO */
+
+.hero{
+margin-top:120px;
+padding:80px;
+text-align:center;
+}
+
+.hero h1{
+font-size:48px;
+color:#0a3d62;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+color:#555;
+margin-bottom:30px;
+}
+
+.hero button{
+padding:14px 30px;
+border:none;
+background:#0a3d62;
+color:white;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+}
+
+/* PRODUCTS */
+
+.products{
+display:flex;
+justify-content:center;
+gap:30px;
+padding:60px;
+flex-wrap:wrap;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+width:220px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+.card h3{
+margin-top:10px;
+color:#0a3d62;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar" id="sidebar">
+
+<h2>Menu</h2>
+
+<a href="home.html">Home</a> <a href="gallery.html">Gallery</a> <a href="contact.html">Contact</a>
+
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<div class="navbar">
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<div class="logo">PureWater</div>
+
+</div>
+
+<div class="hero">
+
+<h1>Hydration Redefined</h1>
+
+<p>Premium reusable water bottles built for performance and style.</p>
+
+<button>Shop Collection</button>
+
+</div>
+
+<div class="products">
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Classic Bottle</h3>
+<p>500ml</p>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Sport Bottle</h3>
+<p>750ml</p>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Cold Max</h3>
+<p>1L</p>
+</div>
+
+</div>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("sidebar").classList.toggle("active");
+document.getElementById("overlay").classList.toggle("active");
+}
+
+</script>
+
+</body>
+</html>
