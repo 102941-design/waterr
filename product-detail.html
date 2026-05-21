@@ -3,29 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Detail — Watuh</title>
+  <title>Products — Watuh</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    .country-select {
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      background: white;
+      margin-right: 10px;
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
       <a href="index.html" class="logo">WATUH</a>
+
       <ul class="nav-links">
-        <li><a href="products.html">Products</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+
       <div class="nav-actions">
+
+        <!-- COUNTRY DROPDOWN (NEW) -->
+        <select id="countrySelect" class="country-select" onchange="applyFilters()">
+          <option value="">All Countries</option>
+          <option value="US">United States</option>
+          <option value="PH">Philippines</option>
+          <option value="AU">Australia</option>
+          <option value="UK">United Kingdom</option>
+          <option value="SG">Singapore</option>
+          <option value="CA">Canada</option>
+          <option value="MY">Malaysia</option>
+        </select>
+
         <a href="cart.html" class="cart-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
           <span class="cart-count" id="cartCount">0</span>
         </a>
+
         <button class="hamburger" id="hamburger">&#9776;</button>
       </div>
     </div>
+
     <div class="mobile-menu" id="mobileMenu">
       <a href="products.html">Products</a>
       <a href="about.html">About</a>
@@ -34,27 +67,90 @@
     </div>
   </nav>
 
-  <!-- BREADCRUMB -->
-  <div class="breadcrumb">
+  <!-- PAGE HEADER -->
+  <div class="page-header">
     <div class="container">
-      <a href="index.html">Home</a> &rsaquo;
-      <a href="products.html">Products</a> &rsaquo;
-      <span id="breadcrumbName">Loading...</span>
+      <h1>All Products</h1>
+      <p>Premium insulated bottles for every adventure.</p>
     </div>
   </div>
 
-  <!-- PRODUCT DETAIL -->
-  <section class="product-detail-section container" id="productDetail">
-    <p style="padding:2rem 0; color:var(--text-muted)">Loading product...</p>
-  </section>
-
-  <!-- RELATED PRODUCTS -->
-  <section class="section" id="relatedSection" style="display:none">
+  <!-- SEARCH -->
+  <div class="search-section">
     <div class="container">
-      <h2 class="section-title">You Might Also Like</h2>
-      <div class="product-grid" id="relatedGrid"></div>
+      <div class="search-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="search" id="searchInput" placeholder="Search bottles..." oninput="applyFilters()" />
+      </div>
     </div>
-  </section>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="catalog-layout container">
+
+    <!-- FILTER SIDEBAR -->
+    <aside class="filter-sidebar">
+
+      <div class="filter-header">
+        <h3>Filter</h3>
+        <button onclick="clearFilters()" class="clear-btn">Clear all</button>
+      </div>
+
+      <!-- SIZE -->
+      <div class="filter-group">
+        <h4>Size</h4>
+        <label><input type="checkbox" value="12oz" onchange="applyFilters()"> 12oz</label>
+        <label><input type="checkbox" value="18oz" onchange="applyFilters()"> 18oz</label>
+        <label><input type="checkbox" value="24oz" onchange="applyFilters()"> 24oz</label>
+        <label><input type="checkbox" value="32oz" onchange="applyFilters()"> 32oz</label>
+        <label><input type="checkbox" value="40oz" onchange="applyFilters()"> 40oz</label>
+      </div>
+
+      <!-- COLOR -->
+      <div class="filter-group">
+        <h4>Color</h4>
+        <div class="color-swatches" id="colorSwatches"></div>
+      </div>
+
+      <!-- PRICE -->
+      <div class="filter-group">
+        <h4>Max Price: $<span id="priceLabel">100</span></h4>
+        <input type="range" min="20" max="100" value="100" step="1"
+          id="priceRange"
+          oninput="document.getElementById('priceLabel').textContent=this.value; applyFilters()" />
+      </div>
+
+      <!-- SORT -->
+      <div class="filter-group">
+        <h4>Sort By</h4>
+        <select id="sortSelect" onchange="applyFilters()">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+
+    </aside>
+
+    <!-- PRODUCTS -->
+    <main class="products-main">
+      <div class="results-info">
+        <span id="resultCount">Loading...</span>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+
+      <p class="no-results" id="noResults" style="display:none;">
+        No products match your filters.
+        <button onclick="clearFilters()">Clear filters</button>
+      </p>
+    </main>
+
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -63,131 +159,151 @@
         <span class="logo">WATUH</span>
         <p>Premium hydration for every journey.</p>
       </div>
+
       <div class="footer-links">
         <h4>Products</h4>
         <a href="products.html">All Bottles</a>
         <a href="products.html">Bestsellers</a>
       </div>
+
       <div class="footer-links">
         <h4>Brand</h4>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>
     </div>
+
     <div class="footer-bottom">
       <p>&copy; 2025 Watuh. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="script.js"></script>
+
   <script>
-    const params  = new URLSearchParams(window.location.search);
-    const id      = parseInt(params.get('id'));
-    const product = products.find(p => p.id === id);
-    const section = document.getElementById('productDetail');
+    // COLOR SWATCHES
+    const allColors = [...new Set(products.map(p =>
+      JSON.stringify({ name: p.colorName, hex: p.color })
+    ))].map(s => JSON.parse(s));
 
-    if (!product) {
-      section.innerHTML = '<p style="padding:4rem 0;">Product not found. <a href="products.html">Back to products</a></p>';
-    } else {
-      document.title = `${product.name} — Watuh`;
-      document.getElementById('breadcrumbName').textContent = product.name;
+    const swatchContainer = document.getElementById('colorSwatches');
 
-      section.innerHTML = `
-        <div class="detail-layout">
-          <div class="detail-images">
-            <div class="detail-main-img" style="background:${product.color}; height:480px; border-radius:16px;"></div>
-            <div class="detail-thumbs">
-              <div class="thumb active" style="background:${product.color};"></div>
-              <div class="thumb" style="background:${product.color}cc;"></div>
-              <div class="thumb" style="background:${product.color}88;"></div>
-            </div>
-          </div>
-          <div class="detail-info">
-            <p class="eyebrow" style="color:var(--accent);">Watuh Collection</p>
-            <h1>${product.name}</h1>
-            <div class="detail-rating">
-              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span style="color:var(--text-muted); font-size:14px;">4.8 (342 reviews)</span>
-            </div>
-            <p class="detail-price">$${product.price}</p>
-            <p class="detail-desc">${product.description}</p>
+    allColors.forEach(c => {
+      swatchContainer.innerHTML += `
+        <label class="swatch-label">
+          <input type="checkbox" value="${c.name}" onchange="applyFilters()" style="display:none">
+          <span class="swatch"
+            style="background:${c.hex}"
+            title="${c.name}"
+            onclick="this.parentNode.querySelector('input').click(); this.classList.toggle('swatch-active')">
+          </span>
+        </label>`;
+    });
 
-            <div class="detail-options">
-              <div class="option-group">
-                <label>Size</label>
-                <div class="size-options">
-                  <span class="size-btn">12oz</span>
-                  <span class="size-btn active">${product.size}</span>
-                  <span class="size-btn">32oz</span>
-                  <span class="size-btn">40oz</span>
-                </div>
-              </div>
-              <div class="option-group">
-                <label>Color — <strong>${product.colorName}</strong></label>
-                <div class="color-options">
-                  <span class="color-dot active" style="background:${product.color};"></span>
-                  <span class="color-dot" style="background:#1A2F4E;"></span>
-                  <span class="color-dot" style="background:#C0392B;"></span>
-                  <span class="color-dot" style="background:#2ECC71;"></span>
-                </div>
-              </div>
-              <div class="option-group">
-                <label>Quantity</label>
-                <div class="qty-control">
-                  <button onclick="changeQty(-1)">&#8722;</button>
-                  <span id="qtyDisplay">1</span>
-                  <button onclick="changeQty(1)">&#43;</button>
-                </div>
-              </div>
-            </div>
+    function applyFilters() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const maxPrice = parseFloat(document.getElementById('priceRange').value);
+      const sort = document.getElementById('sortSelect').value;
 
-            <div class="detail-actions">
-              <button class="btn btn-primary btn-full" onclick="addToCartQty(${product.id})">Add to Cart</button>
-              <button class="btn btn-outline btn-full" onclick="window.location='cart.html'">View Cart</button>
-            </div>
+      // ✅ NEW COUNTRY LOGIC (dropdown)
+      const selectedCountry = document.getElementById('countrySelect').value;
 
-            <div class="detail-features">
-              <div class="feat"><span>&#10003;</span> TempShield™ double-wall vacuum insulation</div>
-              <div class="feat"><span>&#10003;</span> 18/8 pro-grade stainless steel</div>
-              <div class="feat"><span>&#10003;</span> BPA-Free &amp; phthalate-free</div>
-              <div class="feat"><span>&#10003;</span> Lifetime warranty</div>
-              <div class="feat"><span>&#10003;</span> Available in: ${product.countries.join(', ')}</div>
-            </div>
-          </div>
-        </div>`;
+      const checkedSizes = [...document.querySelectorAll('.filter-sidebar input[type=checkbox]:checked')]
+        .map(el => el.value);
 
-      // Related products
-      const related = products.filter(p => p.id !== product.id).slice(0, 4);
-      const relatedGrid = document.getElementById('relatedGrid');
-      document.getElementById('relatedSection').style.display = 'block';
-      related.forEach(p => {
-        relatedGrid.innerHTML += `
-          <div class="product-card" onclick="window.location='product-detail.html?id=${p.id}'">
-            <div class="product-img" style="background:${p.color}"></div>
-            <div class="product-info">
-              <h3>${p.name}</h3>
-              <p class="product-meta">${p.size} · ${p.colorName}</p>
-              <div class="product-footer">
-                <span class="price">$${p.price}</span>
-                <button class="btn-add" onclick="event.stopPropagation(); addToCart(${p.id})">+ Cart</button>
-              </div>
-            </div>
-          </div>`;
+      const checkedColors = [...document.querySelectorAll('.swatch-active')]
+        .map(el => el.title);
+
+      let filtered = products.filter(p => {
+
+        const matchSearch =
+          !search ||
+          p.name.toLowerCase().includes(search) ||
+          p.colorName.toLowerCase().includes(search) ||
+          p.size.includes(search);
+
+        const matchCountry =
+          !selectedCountry || p.countries.includes(selectedCountry);
+
+        const matchSize =
+          checkedSizes.length === 0 || checkedSizes.includes(p.size);
+
+        const matchColor =
+          checkedColors.length === 0 || checkedColors.includes(p.colorName);
+
+        const matchPrice =
+          p.price <= maxPrice;
+
+        return matchSearch && matchCountry && matchSize && matchColor && matchPrice;
       });
+
+      if (sort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+      if (sort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+      if (sort === 'name') filtered.sort((a,b) => a.name.localeCompare(b.name));
+
+      renderProducts(filtered);
     }
 
-    let qty = 1;
-    function changeQty(delta) {
-      qty = Math.max(1, qty + delta);
-      document.getElementById('qtyDisplay').textContent = qty;
+    function renderProducts(list) {
+      const grid = document.getElementById('productGrid');
+      const none = document.getElementById('noResults');
+
+      document.getElementById('resultCount').textContent =
+        `${list.length} product${list.length !== 1 ? 's' : ''} found`;
+
+      if (list.length === 0) {
+        grid.innerHTML = '';
+        none.style.display = 'block';
+        return;
+      }
+
+      none.style.display = 'none';
+
+      grid.innerHTML = list.map(p => `
+        <div class="product-card" onclick="window.location='product-detail.html?id=${p.id}'">
+          <div class="product-img" style="background:${p.color}">
+            ${p.isNew ? '<span class="badge-new">New</span>' : ''}
+            ${p.sale ? '<span class="badge-sale">Sale</span>' : ''}
+          </div>
+
+          <div class="product-info">
+            <h3>${p.name}</h3>
+            <p class="product-meta">${p.size} · ${p.colorName}</p>
+            <p class="product-countries">${p.countries.join(' · ')}</p>
+
+            <div class="product-footer">
+              <span class="price">$${p.price}</span>
+              <button class="btn-add"
+                onclick="event.stopPropagation(); addToCart(${p.id})">
+                + Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
     }
-    function addToCartQty(id) {
-      for (let i = 0; i < qty; i++) addToCart(id);
+
+    function clearFilters() {
+      document.querySelectorAll('.filter-sidebar input[type=checkbox]').forEach(el => el.checked = false);
+      document.querySelectorAll('.swatch').forEach(el => el.classList.remove('swatch-active'));
+
+      document.getElementById('priceRange').value = 100;
+      document.getElementById('priceLabel').textContent = '100';
+
+      document.getElementById('searchInput').value = '';
+      document.getElementById('sortSelect').value = 'featured';
+
+      document.getElementById('countrySelect').value = '';
+
+      applyFilters();
     }
+
+    applyFilters();
 
     document.getElementById('hamburger').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('open');
     });
   </script>
+
 </body>
 </html>

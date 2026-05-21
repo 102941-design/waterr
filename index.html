@@ -3,220 +3,229 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Watuh — Premium Hydration</title>
+  <title>Watuh — Built for Focus & Hydration</title>
+
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="logo">WATUH</a>
-      <ul class="nav-links">
-        <li><a href="products.html">Products</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="cart.html" class="cart-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <span class="cart-count" id="cartCount">0</span>
-        </a>
-        <button class="hamburger" id="hamburger">&#9776;</button>
-      </div>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+
+    <a href="index.html" class="logo">WATUH</a>
+
+    <ul class="nav-links">
+      <li><a href="products.html">Products</a></li>
+      <li><a href="about.html">Impact</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="products.html" class="nav-cta">Shop Now</a>
+
+      <a href="cart.html" class="cart-icon">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </a>
+
+      <button class="hamburger" id="hamburger">&#9776;</button>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="products.html">Products</a>
+
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-content">
+
+    <p class="eyebrow">Student Focus Collection</p>
+
+    <h1>Hydration That<br>Helps You Focus.</h1>
+
+    <p class="hero-sub">
+      A clean, minimal bottle designed for students — built for study sessions, exams, and long days of focus.
+    </p>
+
+    <div class="hero-btns">
+      <a href="products.html" class="btn btn-primary">Explore Bottles</a>
+      <a href="about.html" class="btn btn-outline">Our Mission</a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- TRUST STRIP -->
+<section class="features-strip">
+  <div class="container">
+
+    <div class="feature-item">📚 Built for Study Sessions</div>
+    <div class="feature-item">🧠 Improves Focus Environment</div>
+    <div class="feature-item">⏳ All-Day Hydration</div>
+    <div class="feature-item">🌍 10% Profits to Education</div>
+
+  </div>
+</section>
+
+<!-- BESTSELLERS -->
+<section class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <h2>Bestsellers</h2>
+      <a href="products.html" class="see-all">View all →</a>
+    </div>
+
+    <div class="product-grid" id="featuredGrid"></div>
+
+  </div>
+</section>
+
+<!-- WHY SECTION -->
+<section class="section alt-bg">
+  <div class="container split">
+
+    <div class="text">
+
+      <h2>Designed for Students</h2>
+
+      <p>
+        Watuh is not just a bottle brand. It is a focus tool for students who want to perform better in school,
+        exams, and daily learning environments.
+      </p>
+
+      <p>
+        Every design choice is intentional — clean visuals, distraction-free form, and long-lasting performance.
+      </p>
+
+    </div>
+
+    <div class="visual-box"></div>
+
+  </div>
+</section>
+
+<!-- IMPACT PREVIEW -->
+<section class="section">
+  <div class="container">
+
+    <h2 class="center-title">Our Impact Promise</h2>
+
+    <div class="impact-grid">
+
+      <div class="impact-card">
+        <h3>10%</h3>
+        <p>Of profits go to education</p>
+      </div>
+
+      <div class="impact-card">
+        <h3>Schools</h3>
+        <p>Long-term goal: build classrooms</p>
+      </div>
+
+      <div class="impact-card">
+        <h3>Global</h3>
+        <p>Supporting students worldwide</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta">
+  <div class="container">
+
+    <h2>Drink with Purpose</h2>
+
+    <p>
+      Every bottle you buy helps fund education projects and supports students around the world.
+    </p>
+
+    <a href="products.html" class="btn btn-primary">Shop Now</a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="container footer-inner">
+
+    <div class="footer-brand">
+      <span class="logo">WATUH</span>
+      <p>Built for focus. Designed for impact.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Shop</h4>
+      <a href="products.html">All Products</a>
+      <a href="products.html">Bestsellers</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Company</h4>
       <a href="about.html">About</a>
+      <a href="about.html">Impact</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Support</h4>
       <a href="contact.html">Contact</a>
-      <a href="cart.html">Cart</a>
+      <a href="#">FAQ</a>
     </div>
-  </nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <p class="eyebrow">New Collection 2025</p>
-      <h1>Hydration,<br>Elevated.</h1>
-      <p class="hero-sub">Built for the wild. Designed for the city.<br>TempShield™ insulation — cold 24hr, hot 12hr.</p>
-      <div class="hero-btns">
-        <a href="products.html" class="btn btn-primary">Shop Now</a>
-        <a href="about.html" class="btn btn-outline">Our Story</a>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  </div>
 
-  <!-- FEATURES STRIP -->
-  <section class="features-strip">
-    <div class="container">
-      <div class="feature-item">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span>TempShield™ Insulation</span>
-      </div>
-      <div class="feature-item">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <span>18/8 Pro-Grade Steel</span>
-      </div>
-      <div class="feature-item">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        <span>Cold 24hr · Hot 12hr</span>
-      </div>
-      <div class="feature-item">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-        <span>BPA Free · Lifetime Warranty</span>
-      </div>
-    </div>
-  </section>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Watuh. All rights reserved.</p>
+  </div>
 
-  <!-- FEATURED PRODUCTS -->
-  <section class="section" id="featured">
-    <div class="container">
-      <div class="section-header">
-        <h2>Bestsellers</h2>
-        <a href="products.html" class="see-all">View all &rarr;</a>
-      </div>
-      <div class="product-grid" id="featuredGrid"></div>
-    </div>
-  </section>
+</footer>
 
-  <!-- BRAND STORY BANNER -->
-  <section class="brand-banner">
-    <div class="container brand-banner-inner">
-      <div class="brand-text">
-        <p class="eyebrow" style="color:#a8c8e8;">Our Mission</p>
-        <h2>Built for Every<br>Journey.</h2>
-        <p>Watuh bottles are engineered with professional-grade stainless steel and TempShield™ double-wall vacuum insulation. From mountain summits to city commutes — your drink stays perfect.</p>
-        <a href="about.html" class="btn btn-outline-light">Learn More</a>
-      </div>
-      <div class="brand-visual">
-        <div class="bottle-showcase">
-          <div class="bottle b1"></div>
-          <div class="bottle b2"></div>
-          <div class="bottle b3"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+<script src="script.js"></script>
 
-  <!-- TESTIMONIALS -->
-  <section class="section">
-    <div class="container">
-      <h2 class="center-title">What People Say</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"The best water bottle I've ever owned. Kept my coffee hot through a 3-hour hike."</p>
-          <span class="reviewer">— Marcus T., Australia</span>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Gorgeous design and incredibly functional. I've recommended it to everyone I know."</p>
-          <span class="reviewer">— Sofia K., Philippines</span>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p>"Worth every penny. Durable, stylish, and the ice stayed frozen overnight."</p>
-          <span class="reviewer">— James L., United States</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<script>
+  // Featured products
+  const featuredGrid = document.getElementById('featuredGrid');
+  const featured = products.slice(0, 4);
 
-  <!-- NEWSLETTER -->
-  <section class="newsletter">
-    <div class="container newsletter-inner">
-      <div>
-        <h3>Stay in the Loop</h3>
-        <p>New drops, exclusive discounts, and hydration tips.</p>
-      </div>
-      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
-        <input type="email" placeholder="Enter your email" required />
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
-    </div>
-  </section>
+  featured.forEach(p => {
+    featuredGrid.innerHTML += `
+      <div class="product-card" onclick="window.location='product-detail.html?id=${p.id}'">
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="logo">WATUH</span>
-        <p>Premium hydration for every journey.</p>
-        <div class="socials">
-          <a href="#" aria-label="Instagram">IG</a>
-          <a href="#" aria-label="Twitter">TW</a>
-          <a href="#" aria-label="Facebook">FB</a>
-          <a href="#" aria-label="TikTok">TK</a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <h4>Products</h4>
-        <a href="products.html">All Bottles</a>
-        <a href="products.html">New Arrivals</a>
-        <a href="products.html">Bestsellers</a>
-        <a href="products.html">Sale</a>
-      </div>
-      <div class="footer-links">
-        <h4>Brand</h4>
-        <a href="about.html">About Watuh</a>
-        <a href="about.html">Sustainability</a>
-        <a href="about.html">Press</a>
-      </div>
-      <div class="footer-links">
-        <h4>Support</h4>
-        <a href="contact.html">Contact Us</a>
-        <a href="#">FAQ</a>
-        <a href="#">Shipping</a>
-        <a href="#">Returns</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Watuh. All rights reserved.</p>
-    </div>
-  </footer>
+        <div class="product-img" style="background:${p.color}"></div>
 
-  <script src="script.js"></script>
-  <script>
-    // Load featured products (first 4)
-    const featuredGrid = document.getElementById('featuredGrid');
-    const featured = products.slice(0, 4);
-    featured.forEach(p => {
-      featuredGrid.innerHTML += `
-        <div class="product-card" onclick="window.location='product-detail.html?id=${p.id}'">
-          <div class="product-img" style="background:${p.color}"></div>
-          <div class="product-info">
-            <h3>${p.name}</h3>
-            <p class="product-meta">${p.size} · ${p.colorName}</p>
-            <div class="product-footer">
-              <span class="price">$${p.price}</span>
-              <button class="btn-add" onclick="event.stopPropagation(); addToCart(${p.id})">Add to Cart</button>
-            </div>
+        <div class="product-info">
+          <h3>${p.name}</h3>
+          <p class="product-meta">${p.size} · ${p.colorName}</p>
+
+          <div class="product-footer">
+            <span class="price">$${p.price}</span>
+            <button class="btn-add" onclick="event.stopPropagation(); addToCart(${p.id})">
+              Add
+            </button>
           </div>
-        </div>`;
-    });
+        </div>
 
-    // Newsletter
-    function handleNewsletter(e) {
-      e.preventDefault();
-      alert('Thanks for subscribing!');
-      e.target.reset();
-    }
+      </div>
+    `;
+  });
 
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    });
+  // cart count
+  const cart = JSON.parse(localStorage.getItem('watuhCart') || '[]');
+  document.getElementById('cartCount').textContent =
+    cart.reduce((a, b) => a + b.qty, 0);
 
-    // Hamburger
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('open');
-    });
-  </script>
+  // hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.querySelector('.mobile-menu').classList.toggle('open');
+  });
+</script>
+
 </body>
 </html>
